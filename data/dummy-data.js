@@ -1,4 +1,4 @@
-import post from '../models/post' 
+import Post from '../models/post' 
 
 const POSTS = [
     new Post(
