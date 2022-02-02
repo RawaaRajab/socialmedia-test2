@@ -5,7 +5,7 @@ class Post {
         this.title = title;
         this.description = description;
     }
-}
+};
 
-
+export default Post;
 //if added manually ?
