@@ -1,7 +1,9 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation-stack';
-import { Platform } from 'react-native';
 
-import PostsOverviewScreen from '../screens/profile/PostsOverView';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+// import { Platform } from 'react-native';
+
+import PostsOverviewScreen from '../screens/profile/PostsOverViewScreen';
 import Colors from '../constants/colors';
 
 const PostsNavigator = createStackNavigator({
