@@ -1,7 +1,7 @@
 
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-// import { Platform } from 'react-native';
+import { Platform } from 'react-native';
 
 import PostsOverviewScreen from '../screens/profile/PostsOverViewScreen';
 import Colors from '../constants/colors';
@@ -11,10 +11,11 @@ const PostsNavigator = createStackNavigator({
 }, {
     defaultNavigationOptions: {
         headerStyle: {
-            backgroundColor: Colors.primary
+            backgroundColor: Platform.OS == 'android' ? Colors.primary : ''
         },
-        headerTintColor: 'white'
+        headerTintColor: Platform.OS == 'android' ? 'white' : Colors.primary
     }
-});
+}
+);
 
 export default createAppContainer(PostsNavigator);
