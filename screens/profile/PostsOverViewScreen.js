@@ -15,7 +15,12 @@ const PostsOverviewScreen = props => {
                     title={itemData.item.title}
                     ownerId={itemData.item.ownerId}
                     description={itemData.item.description}
-                    onViewPost={() => { }}
+                    onViewPost={() => {
+                        props.navigation.navigate('PostDescription', {
+                            postId: itemData.item.id,
+                            postDescription: itemData.item.description
+                        }); //or just pass the name //{ routeName: 'PostDescription' }
+                    }}
                     onShareToProfile={() => { }}
                     onAddToFavourite={() => { }}
                     onWriteComment={() => { }}

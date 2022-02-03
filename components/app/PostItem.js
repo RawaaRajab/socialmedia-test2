@@ -1,19 +1,54 @@
 import React from 'react';
-import { View, Text, StyleSheet, shadowOffset } from 'react-native';
-import { Button } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    TouchableNativeFeedback,
+    Platform,
+    Button
+} from 'react-native';
+import Colors from '../../constants/colors';
 
 const PostItem = props => {
+
+    let TouchableCMP = TouchableOpacity;
+
+    if (Platform.OS == 'android' && Platform.Version >= 21) {
+        TouchableCMP = TouchableNativeFeedback;
+    }
+
     return (
-        <View style={styles.post}>
-            <Text>{props.title}</Text>
-            <Text>{props.description}</Text>
-            <View>
-                <Button title='view full post' onPress={props.onViewPost} />
-                <Button title='share' onPress={props.onShareToProfile} />
-                <Button title='favourite' onPress={props.onAddToFavourite} />
-                <Button title='comment' onPress={props.onWriteComment} />
+        <View style={styles.post} >
+            <View style={styles.touchable}>
+                <TouchableCMP onPress={props.onViewPost} useForeground>
+                    <View>
+                        <View style={styles.description} >
+                            <Text style={styles.title}>{props.title}</Text>
+                            <Text style={styles.description}>{props.description}</Text>
+                        </View>
+                        <View style={styles.actions}>
+                            <Button title='view full post'
+                                onPress={props.onViewPost}
+                                color={Colors.primary}
+                            />
+                            <Button title='share'
+                                onPress={props.onShareToProfile}
+                                color={Colors.primary}
+                            />
+                            <Button title='favourite'
+                                onPress={props.onAddToFavourite}
+                                color={Colors.primary}
+                            />
+                            <Button title='comment'
+                                onPress={props.onWriteComment}
+                                color={Colors.primary}
+                            />
+                        </View>
+                    </View>
+                </TouchableCMP>
             </View>
-        </View>
+        </View >
     );
 };
 
@@ -26,21 +61,31 @@ const styles = StyleSheet.create({
         elevation: 5,
         borderRadius: 10,
         backgroundColor: 'white',
-        height: 300,
+        height: 200,
         margin: 20
     },
+    touchable: {
+        borderRadius: 10,
+        overflow: 'hidden'
+    },
     title: {
-        fontSize: 18,
+        textAlign: 'center',
+        fontSize: 20,
         marginVertical: 4,
+        height: '20%',
     },
     description: {
-        fontSize: 14,
-        marginVertical: 3
+        textAlign: 'center',
+        fontSize: 15,
+        padding: 10,
+        height: '50%',
+
     },
     actions: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        height: '75%',
     },
 });
 
