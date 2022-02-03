@@ -10,8 +10,8 @@ const PostsDescriptionScreen = props => {
     );
 
     return (
-        <ScrollView>
-            <View>
+        <ScrollView style={styles.post}>
+            <View style={styles.description}>
                 <Text>{selectedPost.description}</Text>
             </View>
             <View style={styles.actions}>
@@ -31,11 +31,29 @@ const PostsDescriptionScreen = props => {
 };
 
 const styles = StyleSheet.create({
+    post: {
+        shadowColor: 'black',
+        shadowOpacity: 0.26,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 8,
+        elevation: 5,
+        borderRadius: 10,
+        backgroundColor: 'white',
+        height: 200,
+        margin: 20
+    },
+    description: {
+        textAlign: 'center',
+        fontSize: 15,
+        padding: 10,
+        fontFamily: 'open-sans',
+        height: '50%',
+    },
     actions: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        height: '25%',
+        height: '80%',
     },
 });
 

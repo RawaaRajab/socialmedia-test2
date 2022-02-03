@@ -31,7 +31,8 @@ const PostsOverviewScreen = props => {
 };
 
 PostsOverviewScreen.navigationOptions = {
-    headerTitle: 'All Posts'
+    headerTitle: 'All Posts',
+    footerText: 'Test'
 };
 
 export default PostsOverviewScreen;

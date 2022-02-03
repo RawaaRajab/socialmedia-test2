@@ -5,7 +5,7 @@ const POSTS = [
         'idTest1',
         'ownerId1',
         'titleTest1',
-        'descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1'
+        'descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1descriptionTest1'
     ),
     new Post(
         'idTest11',

@@ -62,30 +62,33 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'white',
         height: 200,
-        margin: 20
+        margin: 5
     },
     touchable: {
         borderRadius: 10,
         overflow: 'hidden'
     },
     title: {
+        fontFamily: 'open-sans-bold',
         textAlign: 'center',
         fontSize: 20,
-        marginVertical: 4,
-        height: '20%',
+        marginVertical: 2,
+        height: '15%',
+        // marginHorizontal: 20
     },
     description: {
+        fontFamily: 'open-sans',
         textAlign: 'center',
         fontSize: 15,
         padding: 10,
-        height: '50%',
-
+        height: '60%',
+        marginHorizontal: 20
     },
     actions: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        height: '75%',
+        height: '55%',
     },
 });
 
