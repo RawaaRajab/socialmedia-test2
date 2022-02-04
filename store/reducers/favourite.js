@@ -1,4 +1,4 @@
-import { ADD_TO_FAVOUTITE } from '../actions/favourite';
+import { ADD_TO_FAVOUTITE, REMOVE_FROM_FAVOURITE } from '../actions/favourite';
 import FavouriteList from '../../models/favourite-item';
 
 const initialState = {
@@ -26,8 +26,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 items: { ...state.items, [addedPost.id]: updatedOrNewFavouriteItem },
-                // totalFavs: state.totalFavst + prodPrice
+                totalFavs: state.tatalFavs,
             };
+        case REMOVE_FROM_FAVOURITE:
+            const updatedFavouriteItem = { ...state.items };
+            delete updatedFavouriteItem[action.pid];
     }
+
     return state;
 };

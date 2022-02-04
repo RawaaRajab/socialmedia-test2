@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import Colors from '../../constants/Colors';
 import FavourieItem from '../../components/app/FavouriteItem';
-
+import * as favouriteActions from '../../store/actions/favourite';
 
 const FavouriteScreen = props => {
 
@@ -27,7 +27,9 @@ const FavouriteScreen = props => {
                 renderItem={itemData => (
                     <FavourieItem
                         title={itemData.item.postTitle}
-                        onRemove={() => { }}
+                        onRemove={() => {
+                            dispatch(favouriteActions.removeFromFavourite(itemData.item.postId));
+                         }}
                     />
                 )}
             />
