@@ -8,7 +8,7 @@ import {
     Platform,
     Button
 } from 'react-native';
-import Colors from '../../constants/colors';
+import Colors from '../../constants/Colors';
 
 const PostItem = props => {
 

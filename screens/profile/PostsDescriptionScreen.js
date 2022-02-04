@@ -1,6 +1,15 @@
 import React from 'react';
-import { View, Text, ScrollView, Button, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
+import {
+    ScrollView,
+    View,
+    Text,
+    Button,
+    StyleSheet
+} from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+
+import Colors from '../../constants/Colors';
+import * as favouriteActions from '../../store/actions/favourite';
 
 const PostsDescriptionScreen = props => {
 
@@ -9,25 +18,34 @@ const PostsDescriptionScreen = props => {
         state.posts.otherPosts.find(prod => prod.id == postId)
     );
 
+    const dispatch = useDispatch;
+
     return (
         <ScrollView style={styles.post}>
-            <View style={styles.description}>
-                <Text>{selectedPost.description}</Text>
-            </View>
+            {/* <View style={styles.description}> */}
+            <Text style={styles.description}>{selectedProduct.description}</Text>
+            {/* </View> */}
             <View style={styles.actions}>
-                <Button title='Share' onPress={() => { }} />
-                <Button title='Favourite' onPress={() => { }} />
-                <Button title='Comment' onPress={() => { }} />
+                <Button
+                    color={Colors.primary}
+                    title='Favourite' onPress={() => {
+                        dispatch(favouriteActions.addToFavourite(selectedPost));
+                    }} />
+                <Button
+                    color={Colors.primary}
+                    title='Comment' onPress={() => { }} />
+                <Button
+                    color={Colors.primary}
+                    title='Share' onPress={() => { }} />
             </View>
         </ScrollView>
     );
+};
 
-    PostsDescriptionScreen.navigationOptions = navData => {
-        return {
-            headerTitle: navData.navigation.getParam('postTitle')
-        };
+PostsDescriptionScreen.navigationOptions = navData => {
+    return {
+        headerTitle: navData.navigation.getParam('postTitle')
     };
-
 };
 
 const styles = StyleSheet.create({

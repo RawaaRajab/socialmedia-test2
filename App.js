@@ -6,10 +6,12 @@ import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
 import postsReducer from './store/reducers/posts';
+import favouriteReducer from './store/reducers/favourite';
 import AppNavigator from './navigation/appNavigator';
 
 const rootReducer = combineReducers({
-  posts: postsReducer
+  posts: postsReducer,
+  favourite: favouriteReducer
 });
 
 const store = createStore(rootReducer);
@@ -28,9 +30,10 @@ export default function App() {
     return (
       <AppLoading
         startAsync={fetchFonts}
-        onFinish={() => 
-          setFontLoaded(true)}
-          onError={(err) => console.log(err)}
+        onFinish={() => {
+          setFontLoaded(true);
+        }}
+        onError={(err) => console.log(err)}
       />
     );
   }

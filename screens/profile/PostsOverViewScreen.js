@@ -1,11 +1,16 @@
 import React from 'react';
-import { FlatList, Text } from 'react-native';
-import { useSelector } from 'react-redux';
+import { FlatList, Platform } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import PostItem from '../../components/app/PostItem';
+import * as favouriteActions from '../../store/actions/favourite';
+import HeaderButton from '../../components/UI/HeaderButton';
 
 const PostsOverviewScreen = props => {
     const posts = useSelector(state => state.posts.otherPosts);
+    const dispatch = useDispatch();
+
     return (
         <FlatList
             data={posts}
@@ -21,8 +26,10 @@ const PostsOverviewScreen = props => {
                             postDescription: itemData.item.description
                         }); //or just pass the name //{ routeName: 'PostDescription' }
                     }}
+                    onAddToFavourite={() => {
+                        dispatch(favouriteActions.addToFavourite(itemData.item));
+                    }}
                     onShareToProfile={() => { }}
-                    onAddToFavourite={() => { }}
                     onWriteComment={() => { }}
                 />
             )}
@@ -31,8 +38,14 @@ const PostsOverviewScreen = props => {
 };
 
 PostsOverviewScreen.navigationOptions = {
-    headerTitle: 'All Posts',
-    footerText: 'Test'
+    headerTitle: 'Home',
+    headerRight: <HeaderButtons>
+        <Item titel='Favourite'
+            iconName={Platform.OS === 'android' ? 'md-favourite' : 'ios-favourite'}
+            onPress={() => {
+                navData.navigation.navigate('Favourite')
+            }} />
+    </HeaderButtons>,
 };
 
 export default PostsOverviewScreen;
